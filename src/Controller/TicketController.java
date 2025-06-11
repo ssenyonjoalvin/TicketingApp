@@ -1,8 +1,11 @@
 package Controller;
+
 import java.util.*;
+
 import Model.TicketSlip;
 import Model.TicketRepo;
 import View.TicketView;
+
 public class TicketController {
 
         private TicketView view;
@@ -14,30 +17,51 @@ public class TicketController {
         }
 
         public void createTicket() {
-            String customerName = view.userInput("customerName");
-            String customerPhoneNumber = view.userInput("phoneNumber");
-            String ticketCategory = view.userInput("ticketCategory");
-            String issueDescription = view.userInput("issueDescription");
-            String dateOfCreation = view.userInput("dateOfCreation");
-            String assignedAgent = view.userInput("assignedAgent");
-            String status = view.userInput("status");
-            String priority = view.userInput("priority");
+            String customerName = view.userInput("Enter customer name ");
+            String customerPhoneNumber = view.userInput("Enter phone number ");
+            String ticketCategory = view.userInput("Enter ticket category ");
+            String issueDescription = view.userInput("Enter issue description ");
+            String assignedAgent = view.userInput("Enter assigned agent ");
+            String status = view.userInput("Enter status ");
+            String priority = view.userInput("Enter priority ");
 
-            TicketSlip ticket = new TicketSlip(    customerName, customerPhoneNumber, ticketCategory, issueDescription, dateOfCreation, assignedAgent, status,priority);
+
+            TicketSlip ticket = new TicketSlip(customerName, customerPhoneNumber, ticketCategory, issueDescription, assignedAgent, status,priority);
             repo.addTicket(ticket);
             view.showMessage("Ticket created successfully!\n");
         }
 
     public void viewAllTickets() {
-        List<TicketSlip> tickets = repo.getAllTickets(); // Assuming you have a getAllTickets method in your repository
+        List<TicketSlip> tickets = repo.getAllTickets();
         if (tickets.isEmpty()) {
-            System.out.println("No tickets available.");
+            System.out.println("No tickets available!");
         } else {
             for (TicketSlip ticket : tickets) {
                 System.out.println(ticket);
             }
         }
     }
+
+//  public void updateTicketInfo() {
+//        String customerName = view.userInput("Enter customer name of the ticket to update:");
+//
+//     //   TicketSlip ticketToUpdate = repo.findTicketByCustomerName(customerName);
+//
+//        if (ticketToUpdate == null) {
+//            view.showMessage(" No ticket found for customer: " + customerName);
+//            return;
+//        }
+//
+//        String newStatus = view.userInput("Enter new status:");
+//        String newPriority = view.userInput("Enter new priority:");
+//        String newComments = view.userInput("Enter any additional comments:");
+//
+//        ticketToUpdate.setStatus(newStatus);
+//        ticketToUpdate.setPriority(newPriority);
+//        ticketToUpdate.setAdditionalComments(newComments);
+//
+//       view.showMessage("✅ Ticket updated successfully!");
+//    }
 
         public void displayMenu() {
             while (true) {
@@ -52,8 +76,8 @@ public class TicketController {
                         viewAllTickets();
                         break;
                     case "3":
-                        view.showMessage("Goodbye!");
-                        return;
+                     //   updateTicketInfo();
+                        break;
                     default:
                         view.showMessage("Invalid option.");
                 }
