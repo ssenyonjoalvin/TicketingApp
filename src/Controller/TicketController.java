@@ -42,25 +42,37 @@ public class TicketController {
         }
     }
 
-//  public void updateTicketInfo() {
-//        String customerName = view.userInput("Enter customer name of the ticket to update:");
+  public void updateTicketInfo() {
+        String customerName = view.userInput("Enter customer name of the ticket to update:");
+
+        TicketSlip ticketToUpdate = repo.findTicketByCustomerName(customerName);
+
+        if (ticketToUpdate == null) {
+            view.showMessage(" No ticket found for customer: " + customerName);
+            return;
+        }
+
+        String newStatus = view.userInput("Enter new status:");
+        String newPriority = view.userInput("Enter new priority:");
+        String newComments = view.userInput("Enter any additional comments:");
+
+        ticketToUpdate.setStatus(newStatus);
+        ticketToUpdate.setPriority(newPriority);
+        ticketToUpdate.setAdditionalComments(newComments);
+
+       view.showMessage(" Ticket updated successfully!\n");
+    }
+
+//    public void checkTicketStatus() {
+//        String customerName = view.userInput("Enter customer name of the ticket to check status:");
 //
-//     //   TicketSlip ticketToUpdate = repo.findTicketByCustomerName(customerName);
+//        TicketSlip ticket = repo.findTicketByCustomerName(customerName);
 //
-//        if (ticketToUpdate == null) {
-//            view.showMessage(" No ticket found for customer: " + customerName);
-//            return;
+//        if (ticket != null) {
+//            view.showMessage("Status: " + ticket.getStatus());
+//        } else {
+//            view.showMessage("Ticket for customer '" + customerName + "' not found.");
 //        }
-//
-//        String newStatus = view.userInput("Enter new status:");
-//        String newPriority = view.userInput("Enter new priority:");
-//        String newComments = view.userInput("Enter any additional comments:");
-//
-//        ticketToUpdate.setStatus(newStatus);
-//        ticketToUpdate.setPriority(newPriority);
-//        ticketToUpdate.setAdditionalComments(newComments);
-//
-//       view.showMessage("✅ Ticket updated successfully!");
 //    }
 
         public void displayMenu() {
@@ -76,7 +88,10 @@ public class TicketController {
                         viewAllTickets();
                         break;
                     case "3":
-                     //   updateTicketInfo();
+                     //   checkTicketStatus();
+                        break;
+                    case "4":
+                        updateTicketInfo();
                         break;
                     default:
                         view.showMessage("Invalid option.");

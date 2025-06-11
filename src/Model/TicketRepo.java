@@ -8,7 +8,17 @@ public class TicketRepo {
         tickets.add(ticket);
     }
 
+    //metod returns the
     public List<TicketSlip> getAllTickets() {
         return tickets;
+    }
+
+    public TicketSlip findTicketByCustomerName(String name) {
+        for (TicketSlip ticket : tickets) {
+            if (ticket.getCustomerName().equalsIgnoreCase(name)) {
+                return ticket;
+            }
+        }
+        return null;
     }
 }
