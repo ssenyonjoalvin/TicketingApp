@@ -2,7 +2,7 @@ package Model;
 
 public class TicketSlip {
     private String customerName;
-    private int customerPhoneNumber;
+    private String customerPhoneNumber;
     private String ticketCategory;
     private String issueDescription;
     private String dateOfCreation;
@@ -10,11 +10,23 @@ public class TicketSlip {
     private String status;
     private String priority;
     private String additionalComments;
-//setting setMethods for the attributes
+
+    public TicketSlip(String customerName, String customerPhoneNumber, String ticketCategory, String issueDescription, String dateOfCreation, String assignedAgent, String status, String priority) {
+        this.customerName= customerName;
+        this.customerPhoneNumber = customerPhoneNumber;
+        this.ticketCategory = ticketCategory;
+        this.issueDescription = issueDescription;
+        this.dateOfCreation = dateOfCreation;
+        this.assignedAgent = assignedAgent;
+        this.status = status;
+        this.priority = priority;
+    }
+
+    //setting setMethods for the attributes
     public void setCustomerName(String a){
         this.customerName = a;
     }
-    public void setCustomerPhoneNumber(int b){
+    public void setCustomerPhoneNumber(String b){
         this.customerPhoneNumber = b;
     }
     public void setTicketCategory(String c){
@@ -42,7 +54,7 @@ public class TicketSlip {
     public String getCustomerName(){
         return customerName;
     }
-    public int getCustomerPhoneNumber(){
+    public String getCustomerPhoneNumber(){
         return customerPhoneNumber;
     }
     public String getTicketCategory(){
