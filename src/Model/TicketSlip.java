@@ -78,4 +78,18 @@ public class TicketSlip {
     public String getAdditionalComments(){
         return additionalComments;
     }
+
+    public String toString() {
+        return "Customer Name : "+  customerName + "\n"+
+          "Customer PhoneNumber : " +customerPhoneNumber+ "\n"+
+         "Ticket Category : " +ticketCategory+ "\n"+
+          "Issue Description : " +issueDescription+ "\n"+
+        "Date of Creation : " + dateOfCreation+ "\n"+
+         "Assigned Agent : "+ assignedAgent+ "\n"+
+         "Status : "+status + "\n"+
+         "Priority : "+priority+ "\n"+
+        "Comments : "+additionalComments + "\n";
+    }
 }
+
+

@@ -1,5 +1,5 @@
 package Controller;
-
+import java.util.*;
 import Model.TicketSlip;
 import Model.TicketRepo;
 import View.TicketView;
@@ -25,8 +25,19 @@ public class TicketController {
 
             TicketSlip ticket = new TicketSlip(    customerName, customerPhoneNumber, ticketCategory, issueDescription, dateOfCreation, assignedAgent, status,priority);
             repo.addTicket(ticket);
-            view.showMessage("Ticket created successfully!");
+            view.showMessage("Ticket created successfully!\n");
         }
+
+    public void viewAllTickets() {
+        List<TicketSlip> tickets = repo.getAllTickets(); // Assuming you have a getAllTickets method in your repository
+        if (tickets.isEmpty()) {
+            System.out.println("No tickets available.");
+        } else {
+            for (TicketSlip ticket : tickets) {
+                System.out.println(ticket);
+            }
+        }
+    }
 
         public void displayMenu() {
             while (true) {
@@ -38,16 +49,11 @@ public class TicketController {
                         createTicket();
                         break;
                     case "2":
-                        // View tickets (can be implemented next)
+                        viewAllTickets();
                         break;
                     case "3":
                         view.showMessage("Goodbye!");
                         return;
-
-                    case "4":
-                        break;
-                    case "5":
-                        break;
                     default:
                         view.showMessage("Invalid option.");
                 }
