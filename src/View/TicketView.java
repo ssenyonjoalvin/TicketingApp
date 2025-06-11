@@ -19,8 +19,5 @@ public class TicketView {
     public void showMessage(String message) {
         System.out.println(message);
     }
-    public static void main (String [ ]args){
-        TicketView see = new TicketView();
-        see.displayMenu();
-    }
+
 }

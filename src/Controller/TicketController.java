@@ -43,6 +43,11 @@ public class TicketController {
                     case "3":
                         view.showMessage("Goodbye!");
                         return;
+
+                    case "4":
+                        break;
+                    case "5":
+                        break;
                     default:
                         view.showMessage("Invalid option.");
                 }
