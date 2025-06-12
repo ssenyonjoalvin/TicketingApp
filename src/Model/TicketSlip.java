@@ -1,20 +1,35 @@
 package Model;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TicketSlip {
     private String customerName;
-    private int customerPhoneNumber;
+    private String customerPhoneNumber;
     private String ticketCategory;
     private String issueDescription;
-    private String dateOfCreation;
+    private LocalDateTime dateOfCreation;
     private String assignedAgent;
     private String status;
     private String priority;
     private String additionalComments;
-//setting setMethods for the attributes
+
+    public TicketSlip(String customerName, String customerPhoneNumber, String ticketCategory, String issueDescription,
+                       String assignedAgent, String status, String priority) {
+        this.customerName= customerName;
+        this.customerPhoneNumber = customerPhoneNumber;
+        this.ticketCategory = ticketCategory;
+        this.issueDescription = issueDescription;
+        this.dateOfCreation = LocalDateTime.now();
+        this.assignedAgent = assignedAgent;
+        this.status = status;
+        this.priority = priority;
+    }
+
+    //setting setMethods for the attributes
     public void setCustomerName(String a){
         this.customerName = a;
     }
-    public void setCustomerPhoneNumber(int b){
+    public void setCustomerPhoneNumber(String b){
         this.customerPhoneNumber = b;
     }
     public void setTicketCategory(String c){
@@ -23,9 +38,7 @@ public class TicketSlip {
     public void setIssueDescription(String d){
         this.issueDescription = d;
     }
-    public void setDateOfCreation(String e){
-        this.dateOfCreation = e;
-    }
+
     public void setAssignedAgent(String f){
         this.assignedAgent = f;
     }
@@ -42,7 +55,7 @@ public class TicketSlip {
     public String getCustomerName(){
         return customerName;
     }
-    public int getCustomerPhoneNumber(){
+    public String getCustomerPhoneNumber(){
         return customerPhoneNumber;
     }
     public String getTicketCategory(){
@@ -51,9 +64,7 @@ public class TicketSlip {
     public String getIssueDescription(){
         return issueDescription;
     }
-    public String getDateOfCreation(){
-        return dateOfCreation;
-    }
+
     public  String getAssignedAgent(){
         return assignedAgent;
     }
@@ -66,4 +77,20 @@ public class TicketSlip {
     public String getAdditionalComments(){
         return additionalComments;
     }
+
+
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return "Customer Name : "+  customerName + "\n"+
+          "Customer PhoneNumber : " +customerPhoneNumber+ "\n"+
+         "Ticket Category : " +ticketCategory+ "\n"+
+          "Issue Description : " +issueDescription+ "\n"+
+        "Date of Creation : " + dateOfCreation.format(formatter) +"\n"+
+         "Assigned Agent : "+ assignedAgent+ "\n"+
+         "Status : "+status + "\n"+
+         "Priority : "+priority+ "\n"+
+        "Comments :  " + (additionalComments != null ? additionalComments : "None") + "\n";
+    }
 }
+
+

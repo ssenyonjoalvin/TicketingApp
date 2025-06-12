@@ -7,20 +7,25 @@ public class TicketView {
         System.out.println("""
                 1. Create Ticket\s
                 2. Get All Tickets
-                3. Get Tickets of Status
-                4. Update ticket
+                3. Search for Ticket 
+                4. Modify Tickets
+                5. Exist
                 """);
     }
-    public String userInput(String message) {
-        System.out.print(message);
+
+    public void updateDeleteMenu(){
+        System.out.println("""
+                1. Update Ticket
+                2. Delete Ticket
+                """);
+    }
+    public String userInput(String label) {
+        System.out.print(label + " : ");
         return scanner.nextLine();
     }
 
-    public void showTicketCreated(int ticketId) {
-        System.out.println("Ticket created successfully! ID: " + ticketId);
+    public void showMessage(String message) {
+        System.out.println(message);
     }
-    public static void main (String [ ]args){
-        TicketView see = new TicketView();
-        see.displayMenu();
-    }
+
 }
