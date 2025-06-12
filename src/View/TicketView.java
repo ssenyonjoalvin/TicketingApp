@@ -7,8 +7,16 @@ public class TicketView {
         System.out.println("""
                 1. Create Ticket\s
                 2. Get All Tickets
-                3. Get Tickets of Status
-                4. Update ticket
+                3. Search for Ticket 
+                4. Modify Tickets
+                5. Exist
+                """);
+    }
+
+    public void updateDeleteMenu(){
+        System.out.println("""
+                1. Update Ticket
+                2. Delete Ticket
                 """);
     }
     public String userInput(String label) {

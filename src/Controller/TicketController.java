@@ -51,16 +51,23 @@ public class TicketController {
             view.showMessage(" No ticket found for customer: " + customerName);
             return;
         }
+        view.updateDeleteMenu();
+      String option = view.userInput("");
+      if(option.equals("1") ){
+          String newStatus = view.userInput("Enter new status:");
+          String newPriority = view.userInput("Enter new priority:");
+          String newComments = view.userInput("Enter any additional comments:");
 
-        String newStatus = view.userInput("Enter new status:");
-        String newPriority = view.userInput("Enter new priority:");
-        String newComments = view.userInput("Enter any additional comments:");
+          ticketToUpdate.setStatus(newStatus);
+          ticketToUpdate.setPriority(newPriority);
+          ticketToUpdate.setAdditionalComments(newComments);
 
-        ticketToUpdate.setStatus(newStatus);
-        ticketToUpdate.setPriority(newPriority);
-        ticketToUpdate.setAdditionalComments(newComments);
+          view.showMessage(" Ticket updated successfully!\n");
+      }else {
+          repo.deleteTicket(ticketToUpdate);
+      }
 
-       view.showMessage(" Ticket updated successfully!\n");
+
     }
 
 //    public void checkTicketStatus() {

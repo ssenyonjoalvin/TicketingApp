@@ -8,6 +8,10 @@ public class TicketRepo {
         tickets.add(ticket);
     }
 
+    public void deleteTicket(TicketSlip ticket){
+        tickets.remove(ticket);
+        System.out.println("Ticket has been delete!!!\n");
+    }
     //metod returns the
     public List<TicketSlip> getAllTickets() {
         return tickets;
