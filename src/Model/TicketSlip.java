@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TicketSlip {
+    private static int IDCounter =1;
+    private int ID;
     private String customerName;
     private String customerPhoneNumber;
     private String ticketCategory;
@@ -15,6 +17,7 @@ public class TicketSlip {
 
     public TicketSlip(String customerName, String customerPhoneNumber, String ticketCategory, String issueDescription,
                        String assignedAgent, String status, String priority) {
+        this.ID = IDCounter++;
         this.customerName= customerName;
         this.customerPhoneNumber = customerPhoneNumber;
         this.ticketCategory = ticketCategory;
@@ -61,6 +64,9 @@ public class TicketSlip {
     public String getTicketCategory(){
         return ticketCategory;
     }
+    public int getID(){
+        return ID;
+    }
     public String getIssueDescription(){
         return issueDescription;
     }
@@ -81,7 +87,8 @@ public class TicketSlip {
 
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return "Customer Name : "+  customerName + "\n"+
+        return "Ticket Id :" +ID +"\n"+
+                "Customer Name : "+  customerName + "\n"+
           "Customer PhoneNumber : " +customerPhoneNumber+ "\n"+
          "Ticket Category : " +ticketCategory+ "\n"+
           "Issue Description : " +issueDescription+ "\n"+

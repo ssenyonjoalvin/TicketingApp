@@ -7,9 +7,12 @@ import View.TicketView;
 public class Main {
     public static void main(String[] args) {
 
-                TicketView view = new TicketView();
-                TicketRepo repo = new TicketRepo();
-                TicketController controller = new TicketController(view, repo);
-                controller.displayMenu();
+                TicketView view = new TicketView(); //object of the view class that handles display to the console
+
+                TicketRepo repo = new TicketRepo(); //object handles the arraylist methods of creation deletion and updating
+
+                TicketController controller = new TicketController(view, repo); // this object connects both the view and the model
+
+                controller.displayMenu(); // method displays main menu
             }
         }
