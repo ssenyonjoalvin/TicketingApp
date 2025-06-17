@@ -5,7 +5,7 @@ import Model.TicketRepo;
 import View.TicketView;
 
 public class Main {
-    public static void main(String[] args) {
+    static public  void  main(String[] args) {
 
                 TicketView view = new TicketView(); //object of the view class that handles display to the console
 

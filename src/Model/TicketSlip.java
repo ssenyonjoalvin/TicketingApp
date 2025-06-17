@@ -3,21 +3,21 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TicketSlip {
-    private static int IDCounter =1;
-    private int ID;
+    private int idCounter =1;
+    private int  id;
     private String customerName;
     private String customerPhoneNumber;
-    private String ticketCategory;
+    private Category ticketCategory;
     private String issueDescription;
     private LocalDateTime dateOfCreation;
     private String assignedAgent;
-    private String status;
-    private String priority;
+    private Status status;
+    private Priority priority;
     private String additionalComments;
 
-    public TicketSlip(String customerName, String customerPhoneNumber, String ticketCategory, String issueDescription,
-                       String assignedAgent, String status, String priority) {
-        this.ID = IDCounter++;
+    public TicketSlip(String customerName, String customerPhoneNumber, Category ticketCategory, String issueDescription,
+                       String assignedAgent, Priority priority,Status status) {
+        id = idCounter++;
         this.customerName= customerName;
         this.customerPhoneNumber = customerPhoneNumber;
         this.ticketCategory = ticketCategory;
@@ -27,7 +27,17 @@ public class TicketSlip {
         this.status = status;
         this.priority = priority;
     }
+// enums
+    public enum Priority{
+         LOW,  MEDIUM, HIGH
+}
 
+public enum Status{
+        PENDING, ONGOING, COMPLETE
+}
+public enum Category{
+        TECH, SALES, MARKETING
+}
     //setting setMethods for the attributes
     public void setCustomerName(String a){
         this.customerName = a;
@@ -35,7 +45,7 @@ public class TicketSlip {
     public void setCustomerPhoneNumber(String b){
         this.customerPhoneNumber = b;
     }
-    public void setTicketCategory(String c){
+    public void setTicketCategory(Category c){
         this.ticketCategory = c;
     }
     public void setIssueDescription(String d){
@@ -45,10 +55,10 @@ public class TicketSlip {
     public void setAssignedAgent(String f){
         this.assignedAgent = f;
     }
-    public void setStatus(String g){
+    public void setStatus(Status g){
         this.status = g;
     }
-    public void setPriority(String h){
+    public void setPriority(Priority h){
         this.priority = h;
     }
     public void  setAdditionalComments(String n){
@@ -61,11 +71,11 @@ public class TicketSlip {
     public String getCustomerPhoneNumber(){
         return customerPhoneNumber;
     }
-    public String getTicketCategory(){
+    public Category getTicketCategory(){
         return ticketCategory;
     }
     public int getID(){
-        return ID;
+        return id;
     }
     public String getIssueDescription(){
         return issueDescription;
@@ -74,10 +84,10 @@ public class TicketSlip {
     public  String getAssignedAgent(){
         return assignedAgent;
     }
-    public String getStatus(){
+    public Status getStatus(){
         return status;
     }
-    public String getPriority(){
+    public Priority getPriority(){
         return priority;
     }
     public String getAdditionalComments(){
@@ -87,7 +97,7 @@ public class TicketSlip {
 
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return "Ticket Id :" +ID +"\n"+
+        return "Ticket Id :" +id +"\n"+
                 "Customer Name : "+  customerName + "\n"+
           "Customer PhoneNumber : " +customerPhoneNumber+ "\n"+
          "Ticket Category : " +ticketCategory+ "\n"+

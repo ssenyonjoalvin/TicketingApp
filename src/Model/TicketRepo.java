@@ -10,9 +10,9 @@ public class TicketRepo {
 
     public void deleteTicket(TicketSlip ticket){
         tickets.remove(ticket);
-        System.out.println("Ticket has been delete!!!\n");
+
     }
-    //metod returns the
+    //method returns the
     public List<TicketSlip> getAllTickets() {
         return tickets;
     }
@@ -29,7 +29,7 @@ public class TicketRepo {
     public List<TicketSlip> findTicketByCustomerName(String name) {
         List<TicketSlip> matched = new ArrayList<>();
         for (TicketSlip ticket : tickets) {
-            if (ticket.getStatus().equalsIgnoreCase(name)) {
+            if (ticket.getCustomerName().equalsIgnoreCase(name)) {
                 matched.add(ticket);
             }
         }
@@ -37,10 +37,10 @@ public class TicketRepo {
     }
 
 
-    public List<TicketSlip> findTicketByStatus(String status) {
+    public List<TicketSlip> findTicketByStatus(TicketSlip.Status status) {
         List<TicketSlip> matched = new ArrayList<>();
         for (TicketSlip ticket : tickets) {
-            if (ticket.getStatus().equalsIgnoreCase(status)) {
+            if (ticket.getStatus() == (status)) {
                 matched.add(ticket);
             }
         }
@@ -48,10 +48,11 @@ public class TicketRepo {
     }
 
 
-    public List<TicketSlip>  findTicketByCategory(String  category) {
+
+    public List<TicketSlip>  findTicketByCategory(TicketSlip.Category  category) {
         List<TicketSlip> matched = new ArrayList<>();
         for (TicketSlip ticket : tickets) {
-            if (ticket.getStatus().equalsIgnoreCase( category)) {
+            if (ticket.getTicketCategory() == ( category)) {
                 matched.add(ticket);
             }
         }
